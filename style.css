@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Josefin+Sans&family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@900&family=Poppins:wght@200;300;400;500;600&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    min-height: 100vh;
+    background-color: #132043;
+    font-family: 'poppins',sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container{
+    background-color: #FDF0F0;
+    width: min(90vw, 600px);
+    padding: 30px 50px;
+    border-radius: 15px;
+}
+.heading{
+    font-size: 20px;
+}
+.question-container{
+    padding-top: 15px;
+    border-top: 1px solid lightgray;
+    margin-top: 5px;
+}
+.question-container > h1{
+    font-size: 24px;
+}
+.answers{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px 0;
+}
+.answer{
+    padding: 10px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.next-btn{
+    display: block;
+    border: none;
+    font-size: 18px;
+    background-color: #132043;
+    color: #FDF0F0;
+    padding: 8px 25px;
+    border-radius: 5px;
+    margin-inline: auto;
+}
+.question-detail{
+    text-align: center;
+    font-size: 14px;
+    margin-top: 10px;
+}
