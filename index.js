@@ -40,16 +40,17 @@ const questionsAnswerData = [
 let totalQuestions = questionsAnswerData.length;
 let startIndex = 0;
 let score = 0;
-let answerClicked = false;
 
 const container = document.querySelector(".container");
 
 window.addEventListener(
   "DOMContentLoaded",
   updateQuestion(questionsAnswerData[startIndex])
-);
+  );
 
 function updateQuestion(question) {
+  let answerClicked = false;
+
   container.innerHTML = `<h1 class="heading">Simple Quiz</h1>
     <div class="question-container">
       <h1>
@@ -92,7 +93,6 @@ function updateQuestion(question) {
     for (let i = 1; i < 5; i++) {
       let answer = "ans" + i;
       if (question[answer] == ans) {
-        console.log(i);
         hilightGreen(answers[i - 1]);
       }
     }
@@ -100,14 +100,21 @@ function updateQuestion(question) {
 
   function ansClickListner(e) {
     e.preventDefault();
+
+    answerClicked = true
+
+    if(answerClicked){
+      nextbtn.addEventListener("click", changeQuestion);
+      answerClicked = false
+    }
     if (e.target.innerText == question.ans) {
       score++;
       hilightGreen(e.target);
     } else {
-      console.log("you clicked wrong one");
       hilightRed(e.target);
       hilightRightone();
     }
+    
     answers.forEach((ans) => {
       ans.removeEventListener("click", ansClickListner);
     });
@@ -115,17 +122,10 @@ function updateQuestion(question) {
 
   answers.forEach((ans) => {
     ans.addEventListener("click", ansClickListner);
-    nextbtn.addEventListener("click", changeQuestion);
   });
 
   function changeQuestion() {
     startIndex++;
-    console.log(startIndex + 1, totalQuestions)
-    // if (startIndex + 1 === totalQuestions - 1) {
-    //     document.getElementById("nextbtn").innerHTML = "Show Result";
-    // } else {
-    //     document.getElementById("nextbtn").innerHTML = "Next";
-    // }
     if (startIndex + 1 <= totalQuestions) {
       updateQuestion(questionsAnswerData[startIndex]);
     } else {
